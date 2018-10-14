@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { stat } from 'fs';
 
 Vue.use(Vuex);
 
@@ -18,11 +17,13 @@ const store = new Vuex.Store({
   mutations: {
     addLike(state) {
       state.liked = !state.liked;
-      return state.liked ? state.likes++ : state.likes--;
+      const value = state.liked ? state.likes++ : state.likes--;
+      return value;
     },
     addFollower(state) {
       state.followed = !state.followed;
-      return state.followed ? state.followers++ : state.followers--;
+      const value = state.followed ? state.followers++ : state.followers--;
+      return value;
     },
     commentsToggleVisibility(state) {
       state.commentsVisibility = !state.commentsVisibility;

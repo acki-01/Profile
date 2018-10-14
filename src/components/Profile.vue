@@ -1,7 +1,7 @@
 <template>
   <div class="profile">
       <div class="personal-info">
-        <img class="face" src="../assets/face.jpg" alt="">
+        <img class="face" src="../assets/face.jpg" alt="face">
           <div class="data">
             <h4 class="name">Harvey Specter <p v-bind:class="[isLiked ? 'red-heart' : 'black-heart', 'heart']" v-on:click='likeClickHandler'></p></h4>
             <p class="address">New York, USA</p>
