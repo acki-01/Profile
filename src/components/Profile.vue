@@ -6,6 +6,7 @@
             <h4 class="name">Harvey Specter <p v-bind:class="[isLiked ? 'red-heart' : 'black-heart', 'heart']" v-on:click='likeClickHandler'></p></h4>
             <p class="address">New York, USA</p>
         </div>
+        <p class="share" v-on:click="toggleModalHandler"></p>
       </div>
       <div class="status">
         <div>
@@ -21,9 +22,6 @@
           <span class="title">Followers</span>
         </div>
         <div class="button-follow" v-on:click="followClickHandler">{{followLabel}}</div>
-      </div>
-      <div>
-
       </div>
   </div>
 </template>
@@ -57,6 +55,9 @@ export default {
     followClickHandler() {
       this.followLabel = this.$store.state.followed ? "FOLLOW" : "UNFOLLOW";
       return this.$store.commit("addFollower");
+    },
+    toggleModalHandler() {
+      return this.$store.commit("toggleModal");
     }
   }
 };
@@ -65,6 +66,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .profile {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 220px;
@@ -111,11 +113,11 @@ export default {
 }
 
 .red-heart {
-  background-image: url("../assets/heart-red.svg");
+  background-image: url("../assets/heart-red.png");
 }
 
 .black-heart {
-  background-image: url("../assets/heart-black.svg");
+  background-image: url("../assets/heart-black.png");
 }
 
 .status {
@@ -161,11 +163,31 @@ export default {
   color: #fff;
   cursor: pointer;
 }
+.share {
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+  background-image: url("../assets/share.png");
+}
 @media screen and (max-width: 475px) {
   .personal-info {
     flex-direction: column;
     align-items: center;
     margin: -20px 0 0 0;
+  }
+  .share {
+    top: 20px;
+  }
+  .button-follow {
+    position: absolute;
+    bottom: 15px;
+    width: 70%;
+  }
+  .profile {
+    height: 240px;
   }
 }
 </style>

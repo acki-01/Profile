@@ -1,6 +1,6 @@
 <template>
   <div class="comments">
-      <p class="info" v-on:click='commentsToggleHandler'>Hide comments <span>(353)</span></p>
+      <p class="info" v-on:click='commentsToggleHandler'>Hide comments <span>({{amount}})</span></p>
       <div class="comments-section" v-if='commentsVisibility'>
         <Comment v-for="(comment, index) in comments" v-bind:text="comment.text" v-bind:key="index"/>
         <textarea @keydown.enter="addCommentHandler" placeholder="Add a comment"></textarea>
@@ -22,6 +22,9 @@ export default {
     },
     comments() {
       return this.$store.state.comments;
+    },
+    amount() {
+      return this.$store.state.comments.length;
     }
   },
   methods: {

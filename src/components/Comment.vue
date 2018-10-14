@@ -5,7 +5,7 @@
           <h5 class="name">Mike Ross</h5>
           <p class="text">{{text}}</p>
       </div>
-      <p class="share" v-on:click="toggleModalHandler"></p>
+      <p class="time" >1t.</p>
   </div>
 </template>
 
@@ -13,12 +13,7 @@
 console.log(this);
 export default {
   name: "Comment",
-  props: ["text"],
-  methods: {
-    toggleModalHandler() {
-      return this.$store.commit("toggleModal");
-    }
-  }
+  props: ["text"]
 };
 </script>
 
@@ -50,13 +45,15 @@ export default {
   font-size: 12px;
   color: #000;
 }
-.share {
-  height: 16px;
-  width: 16px;
+.time {
+  font-size: 12px;
   display: inline-block;
-  margin: 0;
-  cursor: pointer;
-  background-image: url("../assets/share.svg");
-  border: 1px solid #ddd;
+  margin: 0 0 0 40px;
+}
+
+@media screen and (max-width: 500px) {
+  .time {
+    margin: 0 0 0 10px;
+  }
 }
 </style>
